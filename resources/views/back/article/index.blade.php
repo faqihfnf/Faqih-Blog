@@ -15,7 +15,7 @@
             <h1 class="h2">Articles</h1>
         </div>
         <div class="mt-3">
-            <button class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#modalCreate">Create</button>
+            <a href="{{('articles/create')}}" class="btn btn-success mb-2">Create</a>
 
             @if ($errors->any())
                 <div class="my-3">
@@ -77,7 +77,7 @@
             serverside: true,
             ajax: '{{ url()->current() }}',
             columns: [
-                {data: 'id', name: 'id'},
+                {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'title', name: 'title'},
                 {data: 'category_id', name: 'category_id'},
                 {data: 'views', name: 'views'},
