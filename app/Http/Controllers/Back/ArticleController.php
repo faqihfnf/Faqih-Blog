@@ -41,11 +41,11 @@ class ArticleController extends Controller
                     return '<div class="text-center">
                                 <a href="articles/' .
                         $article->id .
-                        '" class="btn btn-sm btn-secondary">Detail</a>
+                        '" class="btn btn-sm btn-secondary"><i class="bi bi-journals" title="Detail"></i></a>
                                 <a href="articles/' .
                         $article->id .
-                        '/edit" class="btn btn-sm btn-primary">Edit</a>
-                                <a href="" class="btn btn-sm btn-danger">Delete</a>
+                        '/edit" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square" title="Edit"></i></a>
+                                <a href="#" onclick="deleteArticle(this)" data-id="'.$article->id.'" class="btn btn-sm btn-danger"><i class="bi bi-trash" title="Delete"></i></a>
                     </div>';
                 })
                 // call custom column
@@ -118,7 +118,7 @@ class ArticleController extends Controller
             $file = $request->file('img');
             $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
             $file->storeAs('public/back/', $fileName);
-            Storage::delete('public/back/'.$request->oldImg);
+            Storage::delete('public/back/' . $request->oldImg);
             $data['img'] = $fileName;
         } else {
             $data['img'] = $request->oldImg;
@@ -136,6 +136,12 @@ class ArticleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = Article::find($id);
+        Storage::delete('public/back/' . $data->img);
+        $data->delete();
+
+        return response()->json([
+            'message' => 'Data deleted successfully',
+        ]);
     }
 }

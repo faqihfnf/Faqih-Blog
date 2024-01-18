@@ -72,7 +72,7 @@
                 </div>
             </div>
             <div class="float-end">
-                <button type="submit" class="btn btn-success">Create</button>
+                <button type="submit" class="btn btn-success mb-2">Create</button>
             </div>
         </form>
         </div>

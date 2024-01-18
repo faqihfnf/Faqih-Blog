@@ -52,7 +52,7 @@
                 </tr>
             </table>
             <div class="float-end">
-                <a href="{{ url('articles') }}" class="btn btn-primary">Back</a>
+                <a href="{{ url('articles') }}" class="btn btn-primary mb-2">Back</a>
             </div>
         </div>
     </main>

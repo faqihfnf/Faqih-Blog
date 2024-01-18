@@ -12,7 +12,7 @@
             <h1 class="h2">Categories</h1>
         </div>
         <div class="mt-3">
-            <button class="btn btn-success mb-2" data-bs-toggle="modal" data-bs-target="#modalCreate">Create</button>
+            <button class="btn btn-success mb-2 d-flex align-center" data-bs-toggle="modal" data-bs-target="#modalCreate"><i class="bi bi-plus-square" style="margin-right: 5px"></i>New</button>
 
             @if ($errors->any())
                 <div class="my-3">
@@ -61,9 +61,9 @@
                             <div class="text-center">
                                 <td>
                                     <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#modalUpdate{{ $item->id }}">Edit</button>
+                                         data-bs-target="#modalUpdate{{ $item->id }}"><i class="bi bi-pencil-square" title="Edit"></i></button>  {{--? Button Edit--}}
                                     <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                        data-bs-target="#modalDelete{{ $item->id }}">Delete</button>
+                                        data-bs-target="#modalDelete{{ $item->id }}"><i class="bi bi-trash" title="Delete"></i></button> {{--? Button Delete--}}
                                 </td>
                             </div>
                         </tr>
