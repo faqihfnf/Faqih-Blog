@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
+use App\Http\Requests\UpdateArticleRequest;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
 class ArticleController extends Controller
@@ -32,13 +34,17 @@ class ArticleController extends Controller
                     if ($article->status == 0) {
                         return '<span class="badge bg-danger">Draft</span>';
                     } else {
-                        return '<span class="badge bg-success">Published</span>';
+                        return '<span class="badge bg-success">Publish</span>';
                     }
                 })
                 ->addColumn('button', function ($article) {
                     return '<div class="text-center">
-                                <a href="articles/'. $article->id. '" class="btn btn-sm btn-secondary">Detail</a>
-                                <a href="" class="btn btn-sm btn-primary">Edit</a>
+                                <a href="articles/' .
+                        $article->id .
+                        '" class="btn btn-sm btn-secondary">Detail</a>
+                                <a href="articles/' .
+                        $article->id .
+                        '/edit" class="btn btn-sm btn-primary">Edit</a>
                                 <a href="" class="btn btn-sm btn-danger">Delete</a>
                     </div>';
                 })
@@ -55,7 +61,7 @@ class ArticleController extends Controller
     public function create()
     {
         return view('back.article.create', [
-            'categories' => Category::get()
+            'categories' => Category::get(),
         ]);
     }
 
@@ -68,7 +74,7 @@ class ArticleController extends Controller
 
         $file = $request->file('img');
 
-        $fileName = uniqid().'.'. $file->getClientOriginalExtension();
+        $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
         $file->storeAs('public/back/', $fileName);
 
         $data['img'] = $fileName;
@@ -84,8 +90,8 @@ class ArticleController extends Controller
      */
     public function show(string $id)
     {
-        return view('back.article.show',[
-            'article'=> Article::find($id)
+        return view('back.article.show', [
+            'article' => Article::find($id),
         ]);
     }
 
@@ -94,15 +100,35 @@ class ArticleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //! function untuk form update
+        return view('back.article.update', [
+            'article' => Article::find($id),
+            'categories' => Category::get(),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateArticleRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+
+        if ($request->hasFile('img')) {
+            $file = $request->file('img');
+            $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/back/', $fileName);
+            Storage::delete('public/back/'.$request->oldImg);
+            $data['img'] = $fileName;
+        } else {
+            $data['img'] = $request->oldImg;
+        }
+
+        $data['slug'] = Str::slug($data['title']);
+
+        Article::find($id)->update($data);
+
+        return redirect(url('articles'))->with('success', 'Article updated successfully');
     }
 
     /**

@@ -41,7 +41,7 @@
                 <tr>
                     <th>Status</th>
                     @if ($article->status == 1)
-                        <td><span class="badge bg-success">Published</span></td>
+                        <td><span class="badge bg-success">Publish</span></td>
                     @else
                         <td><span class="badge bg-danger">Draft</span></td>
                     @endif
