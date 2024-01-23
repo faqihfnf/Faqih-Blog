@@ -12,8 +12,11 @@
             <h1 class="h2">Users</h1>
         </div>
         <div class="mt-3">
-            <button class="btn btn-success mb-2 d-flex align-center" data-bs-toggle="modal" data-bs-target="#modalCreate"><i
-                    class="bi bi-person-add" style="margin-right: 5px"></i>Register</button>
+
+            @if (auth()->user()->role == '1')
+                <button class="btn btn-success mb-2 d-flex align-center" data-bs-toggle="modal"
+                    data-bs-target="#modalCreate"><i class="bi bi-person-add" style="margin-right: 5px"></i>Register</button>
+            @endif
 
             @if ($errors->any())
                 <div class="my-3">
@@ -64,9 +67,15 @@
                                     <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#modalUpdate{{ $item->id }}"><i class="bi bi-pencil-square"
                                             title="Edit"></i></button> {{-- ? Button Edit --}}
-                                    <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                        data-bs-target="#modalDelete{{ $item->id }}"><i class="bi bi-trash"
-                                            title="Delete"></i></button> {{-- ? Button Delete --}}
+
+                                    @if (auth()->user()->role == '1')
+                                        @if ($item->id != auth()->user()-> id)
+                                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                                data-bs-target="#modalDelete{{ $item->id }}"><i class="bi bi-trash"
+                                                    title="Delete"></i></button> {{-- ? Button Delete --}}
+                                        @endif
+                                    @endif
+
                                 </td>
                             </div>
                         </tr>

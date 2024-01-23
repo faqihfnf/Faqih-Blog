@@ -13,12 +13,16 @@
                         Articles
                     </a>
                 </li>
+
+                @if (auth()->user()->role == '1')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('categories') }}">
-                        <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                        <span data-feather="book" class="align-text-bottom"></span>
                         Categories
                     </a>
                 </li>
+                @endif
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('users') }}">
                         <span data-feather="users" class="align-text-bottom"></span>
@@ -33,7 +37,7 @@
                     <a class="nav-link" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                        <span data-feather="bar-chart-2" class="align-text-bottom"></span>
+                        <span data-feather="log-out" class="align-text-bottom"></span>
                         Logout
                     </a>
                 </li>

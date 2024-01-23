@@ -18,16 +18,18 @@ use App\Http\Controllers\Back\DashboardController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/',[App\Http\Controllers\Front\HomeController::class, 'index']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 
     Route::resource('/articles', ArticleController::class);
 
-    Route::resource('/categories', CategoryController::class)->only(['index', 'store', 'update', 'destroy']);
+    Route::resource('/categories', CategoryController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('UserAccess:1'); //1 adalah role admin 2 adalah role penulis 
 
     Route::resource('/users', UserController::class);
 
