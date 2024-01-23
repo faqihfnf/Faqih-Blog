@@ -16,7 +16,7 @@
         </div>
         <div class="mt-3">
             <a href="{{ 'articles/create' }}" class="btn btn-success mb-2 d-inline-flex align-center"><i
-                    class="bi bi-plus-square" style="margin-right: 5px"></i>New</a>
+                    class="bi bi-plus-circle" style="margin-right: 5px"></i>Create</a>
 
             @if ($errors->any())
                 <div class="my-3">

@@ -1,21 +1,21 @@
-@foreach ($categories as $item)
+@foreach ($users as $item)
     <!-- Modal -->
     <div class="modal fade" id="modalDelete{{ $item->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-danger text-white">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete Categories!</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete User!</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
-                    <form action="{{ url('categories/' . $item->id) }}" method="post">
+                    <form action="{{ url('users/' . $item->id) }}" method="post">
                         @method('DELETE')
                         @csrf
 
                         <div class="mb-3">
-                            <p>Are you sure want to delete category <b><u>{{ $item->name }}</b></u></p>
+                            <p>Are you sure want to delete user <b><u>{{ $item->name }}</b></u></p>
                         </div>
 
                         <div class="modal-footer">
