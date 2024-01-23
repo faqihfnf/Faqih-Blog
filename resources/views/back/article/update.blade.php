@@ -22,7 +22,7 @@
                 </div>
             </div>
         @endif
-        <form action="{{ url('articles/'.$article->id)}}" method="post" enctype="multipart/form-data">
+        <form action="{{ url('articles/' . $article->id) }}" method="post" enctype="multipart/form-data">
             @method('PUT')
             @csrf
 
@@ -33,7 +33,7 @@
                     <div class="mb-3">
                         <label for="title">Title</label>
                         <input type="text" class="form-control" id="title" name="title"
-                            value="{{ old('title',$article->title) }}">
+                            value="{{ old('title', $article->title) }}">
                     </div>
                 </div>
                 <div class="col-6">
@@ -41,11 +41,11 @@
                         <label for="category_id">Category</label>
                         <select name="category_id" id="category_id" class="form-control">
                             @foreach ($categories as $item)
-                            @if ($item->id == $article->category_id)
-                            <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
-                            @else
-                                <option value="{{ $item->id }}">{{ $item->name }}</option>
-                            @endif
+                                @if ($item->id == $article->category_id)
+                                    <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
+                                @else
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
@@ -53,14 +53,15 @@
             </div>
             <div class="mb-3">
                 <label for="desc">Description</label>
-                <textarea name="desc" id="desc" cols="30" rows="10" class="form-control">{{ old('desc', $article->desc) }}</textarea>
+                <textarea name="desc" id="editor" cols="30" rows="10" class="form-control">{{ old('desc', $article->desc) }}</textarea>
             </div>
             <div class="mb-3">
                 <label for="img">Image (Max 5MB)</label>
                 <input type="file" name="img" id="img" class="form-control">
+
                 <div class="mt-1">
                     <small>Current Image</small><br>
-                    <img src="{{ asset('storage/back/'.$article->img) }}" alt="" width="50px">
+                    <img src="{{ asset('storage/back/' . $article->img) }}" alt="" class="img-thumbnail img-preview" width="100px">
                 </div>
             </div>
             <div class="row">
@@ -68,15 +69,16 @@
                     <div class="mb-3">
                         <label for="status">Status</label>
                         <select name="status" id="status" class="form-control">
-                            <option value="1"{{ $article->status == 1 ? 'selected' : null}}>Publish</option>
-                            <option value="0"{{ $article->status == 1 ? 'selected' : null}}>Draft</option>
+                            <option value="1"{{ $article->status == 1 ? 'selected' : null }}>Publish</option>
+                            <option value="0"{{ $article->status == 1 ? 'selected' : null }}>Draft</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="status">Publish Date</label>
-                        <input type="date" name="publish_date" id="publish_date" class="form-control" value="{{ old('publish_date', $article->publish_date) }}">
+                        <input type="date" name="publish_date" id="publish_date" class="form-control"
+                            value="{{ old('publish_date', $article->publish_date) }}">
                     </div>
                 </div>
             </div>
@@ -90,4 +92,32 @@
 
 @push('js')
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+    <script>
+        var options = {
+            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+        };
+    </script>
+
+    <script>
+        CKEDITOR.replace('editor', options);
+
+        $('#img').change(function() {
+            previewImage(this);
+        });
+
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('.img-preview').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 @endpush

@@ -160,6 +160,8 @@ return [
              * Package Service Providers...
              */
             Yajra\DataTables\DataTablesServiceProvider::class,
+            UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+            Intervention\Image\ImageServiceProvider::class,
             /*
              * Application Service Providers...
              */
@@ -184,6 +186,7 @@ return [
 
     'aliases' => Facade::defaultAliases()
         ->merge([
+            'Image' => Intervention\Image\Facades\Image::class,
             // 'Example' => App\Facades\Example::class,
         ])
         ->toArray(),

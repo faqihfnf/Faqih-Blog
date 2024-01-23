@@ -25,7 +25,7 @@ class UpdateArticleRequest extends FormRequest
             'category_id'   => 'required',
             'title'         => 'required',
             'slug'          => 'nullable',
-            'desc'          => 'required',
+            'desc'          => 'nullable',
             'img'           => 'nullable|image|file|mimes:png,jpg,jpeg|max:5000',
             'status'        => 'required',
             'publish_date'  => 'required',
