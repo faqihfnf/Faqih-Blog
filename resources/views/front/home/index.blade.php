@@ -26,7 +26,10 @@
                                 <a href="#!"><img class="card-img-top" src="{{ asset('storage/back/' . $item->img) }}"
                                         alt="..." /></a>
                                 <div class="card-body">
-                                    <div class="small text-muted">{{ $item->created_at->format('d M Y') }}</div>
+                                    <div class="small text-muted d-flex justify-content-between">
+                                        <div>{{ $item->created_at->format('d M Y') }}</div>                                     
+                                        <div><a href="{{url('category/'.$item->Category->slug)}}">{{ $item->Category->name }}</a></div>
+                                    </div>
                                     <h2 class="card-title h4">{{ $item->title }}</h2>
                                     <p class="card-text">{{ Str::limit(strip_tags($item->desc), 100, '...') }}</p>
                                     <a class="btn btn-primary" href="#!">Read more →</a>
@@ -36,7 +39,7 @@
                     @endforeach
                 </div>
                 <!-- Pagination-->
-                <nav aria-label="Pagination">
+                {{-- <nav aria-label="Pagination">
                     <hr class="my-0" />
                     <ul class="pagination justify-content-center my-4">
                         <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1"
@@ -48,7 +51,11 @@
                         <li class="page-item"><a class="page-link" href="#!">15</a></li>
                         <li class="page-item"><a class="page-link" href="#!">Older</a></li>
                     </ul>
-                </nav>
+                </nav> --}}
+
+                <div class="pagination justify-content-center my-4">
+                    {{ $articles->onEachSide(5)->links() }}
+                </div>
             </div>
 
             @include('front.layout.side-widget')

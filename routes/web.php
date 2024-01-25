@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Back\UserController;
+use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Back\ArticleController;
 use App\Http\Controllers\Back\CategoryController;
 use App\Http\Controllers\Back\DashboardController;
@@ -23,6 +24,7 @@ use App\Http\Controllers\Back\DashboardController;
 // });
 
 Route::get('/',[App\Http\Controllers\Front\HomeController::class, 'index']);
+Route::post('/articles/search',[HomeController::class, 'index'])->name('search');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
