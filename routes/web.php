@@ -25,15 +25,18 @@ use App\Http\Controllers\Front\ArticleController as FrontArticleController;
 // });
 
 Route::get('/',[App\Http\Controllers\Front\HomeController::class, 'index']);
-Route::post('/articles/search',[HomeController::class, 'index'])->name('search');
 
 Route::get('/post/{slug}',[FrontArticleController::class, 'show']);
+
+Route::get('/articles',[FrontArticleController::class, 'index']);
+
+Route::post('/articles/search',[FrontArticleController::class, 'index'])->name('search');
 
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 
-    Route::resource('/articles', ArticleController::class);
+    Route::resource('/article', ArticleController::class);
 
     Route::resource('/categories', CategoryController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('UserAccess:1'); //1 adalah role admin 2 adalah role penulis 
 

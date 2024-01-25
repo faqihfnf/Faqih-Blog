@@ -15,7 +15,7 @@
             <h1 class="h2">Articles</h1>
         </div>
         <div class="mt-3">
-            <a href="{{ 'articles/create' }}" class="btn btn-success mb-2 d-inline-flex align-center"><i
+            <a href="{{ 'article/create' }}" class="btn btn-success mb-2 d-inline-flex align-center"><i
                     class="bi bi-plus-circle" style="margin-right: 5px"></i>Create</a>
 
             @if ($errors->any())
@@ -109,7 +109,7 @@
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
                         type: "DELETE",
-                        url: "/articles/" + id,
+                        url: "/article/" + id,
                         datatype: "JSON",
                         success: function(response) {
                             Swal.fire({
@@ -117,7 +117,7 @@
                                 text: response.message,
                                 icon: "success",
                             }).then((result) => {
-                                window.location.href = "/articles";
+                                window.location.href = "/article";
                             })
                         },
                         error: function(xhr, ajaxOptions, thrownError) {

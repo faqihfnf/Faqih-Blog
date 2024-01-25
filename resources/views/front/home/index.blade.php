@@ -44,7 +44,7 @@
             @endforeach
         </div>
         <div class="pagination justify-content-center my-4">
-            {{ $articles->onEachSide(5)->links() }}
+            {{ $articles->links() }}
         </div>
 
 

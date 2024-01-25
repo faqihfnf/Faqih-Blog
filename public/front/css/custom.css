@@ -26,3 +26,7 @@
 .card-body p img {
     max-width: 100%;
 }
+
+.nav-bg {
+    background-color: rgb(12, 12, 86);
+}

@@ -39,10 +39,10 @@ class ArticleController extends Controller
                 })
                 ->addColumn('button', function ($article) {
                     return '<div class="text-center">
-                                <a href="articles/' .
+                                <a href="article/' .
                         $article->id .
                         '" class="btn btn-sm btn-secondary"><i class="bi bi-journals" title="Detail"></i></a>
-                                <a href="articles/' .
+                                <a href="article/' .
                         $article->id .
                         '/edit" class="btn btn-sm btn-primary"><i class="bi bi-pencil-square" title="Edit"></i></a>
                                 <a href="#" onclick="deleteArticle(this)" data-id="'.$article->id.'" class="btn btn-sm btn-danger"><i class="bi bi-trash" title="Delete"></i></a>
@@ -82,7 +82,7 @@ class ArticleController extends Controller
 
         Article::create($data);
 
-        return redirect(url('articles'))->with('success', 'Article created successfully');
+        return redirect(url('article'))->with('success', 'Article created successfully');
     }
 
     /**
@@ -128,7 +128,7 @@ class ArticleController extends Controller
 
         Article::find($id)->update($data);
 
-        return redirect(url('articles'))->with('success', 'Article updated successfully');
+        return redirect(url('article'))->with('success', 'Article updated successfully');
     }
 
     /**
