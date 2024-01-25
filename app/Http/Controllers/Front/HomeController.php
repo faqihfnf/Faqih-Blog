@@ -17,9 +17,9 @@ class HomeController extends Controller
                 ->whereStatus(1)
                 ->where('title', 'like', '%' .$keyword. '%')
                 ->latest()
-                ->paginate(4);
+                ->paginate(6);
         } else {
-            $articles = Article::with('Category')->whereStatus(1)->latest()->paginate(4);
+            $articles = Article::with('Category')->whereStatus(1)->latest()->paginate(6);
         }
 
         return view('front.home.index', [
