@@ -27,8 +27,10 @@ class ArticleController extends Controller
         ]);
     }
     public function show($slug){
+        $article = Article::whereSlug($slug)->firstOrFail();
+        $article->increment('views');
         return view('front.article.show', [
-            'article' => Article::whereSlug($slug)->first(),
+            'article' => $article,
             'categories' => Category::latest()->get(),
         ]);
     }

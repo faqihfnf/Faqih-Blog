@@ -1,5 +1,7 @@
 @extends('front.layout.template')
 
+@section('title', 'Faqih Nur Fahmi Blog')
+
 @section('content')
     <!-- Page content-->
     <div class="container">

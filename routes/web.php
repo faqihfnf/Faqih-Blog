@@ -8,6 +8,7 @@ use App\Http\Controllers\Back\ArticleController;
 use App\Http\Controllers\Back\CategoryController;
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Front\ArticleController as FrontArticleController;
+use App\Http\Controllers\Front\CategoryController as FrontCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,7 @@ Route::get('/articles',[FrontArticleController::class, 'index']);
 
 Route::post('/articles/search',[FrontArticleController::class, 'index'])->name('search');
 
+Route::get('/category/{slug}',[FrontCategoryController::class, 'index']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
