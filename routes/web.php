@@ -6,6 +6,7 @@ use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Back\ArticleController;
 use App\Http\Controllers\Back\CategoryController;
+use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Front\ArticleController as FrontArticleController;
 use App\Http\Controllers\Front\CategoryController as FrontCategoryController;
@@ -26,7 +27,10 @@ use App\Http\Controllers\Front\CategoryController as FrontCategoryController;
 // });
 
 Route::get('/',[App\Http\Controllers\Front\HomeController::class, 'index']);
+
 Route::get('/about',[App\Http\Controllers\Front\HomeController::class, 'about']);
+
+Route::get('/contact',[ContactController::class, 'index']);
 
 Route::get('/post/{slug}',[FrontArticleController::class, 'show']);
 

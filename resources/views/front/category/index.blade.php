@@ -15,12 +15,12 @@
             </form>
         </div>
 
-            <p>Showing articles with category: <b><i>{{ $category }}</b></i>
-            </p>
+        <p>Showing articles with category: <b><i>{{ $category }}</b></i>
+        </p>
 
         <div class="row">
             @forelse ($articles as $item)
-                <div class="col-lg-4">
+                <div class="col-lg-4" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
                     <!-- Blog post-->
                     <div class="card mb-4 shadow">
                         <a href="{{ url('post/' . $item->slug) }}"><img class="card-img-top post-img"
@@ -34,12 +34,14 @@
                             </div>
                             <h1 class="card-title h4">{{ $item->title }}</h1>
                             <p class="card-text">{{ Str::limit(strip_tags($item->desc), 100, '...') }}</p>
+                        </div>
+                        <div class="m-3 d-flex justify-content-end">
                             <a class="btn btn-primary" href="{{ url('post/' . $item->slug) }}">Read more →</a>
                         </div>
                     </div>
                 </div>
             @empty
-                <h3><b>Article Not Found!!  </b></h3>
+                <h3><b>Article Not Found!! </b></h3>
             @endforelse
             <div class="pagination justify-content-center my-4">
                 {{ $articles->links() }}

@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <!-- Blog entries-->
-            <div class="col-lg-8">
+            <div class="col-lg-8" data-aos="fade-right" data-aos-duration="3000" data-aos-delay="1000">
                 <!-- Featured blog post-->
                 <div class="card mb-4 shadow">
                     <a href="{{ url('post/' . $article->slug) }}"><img class="card-img-top single-img"

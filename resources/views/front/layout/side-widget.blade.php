@@ -1,5 +1,5 @@
                 <!-- Side widgets-->
-                <div class="col-lg-4">
+                <div class="col-lg-4" data-aos="fade-left" data-aos-duration="3000" data-aos-delay="500">
                     <!-- Search widget-->
                     <div class="card mb-4 shadow">
                         <div class="card-header">Search</div>
