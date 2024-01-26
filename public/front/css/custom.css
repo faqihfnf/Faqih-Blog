@@ -5,6 +5,13 @@
     border-radius: calc(0.25rem - 1px);
 }
 
+.about-img {
+    width: 100%;
+    height: 570px;
+    object-fit: cover;
+    border-radius: calc(0.25rem - 1px);
+}
+
 .single-img {
     width: 100%;
     object-fit: cover;

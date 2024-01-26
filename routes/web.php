@@ -26,6 +26,7 @@ use App\Http\Controllers\Front\CategoryController as FrontCategoryController;
 // });
 
 Route::get('/',[App\Http\Controllers\Front\HomeController::class, 'index']);
+Route::get('/about',[App\Http\Controllers\Front\HomeController::class, 'about']);
 
 Route::get('/post/{slug}',[FrontArticleController::class, 'show']);
 
