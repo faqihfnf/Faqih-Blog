@@ -50,6 +50,10 @@
                     <th>Published Date</th>
                     <td>{{ $article->publish_date }}</td>
                 </tr>
+                <tr>
+                    <th>Author</th>
+                    <td>{{ $article->User->name }}</td>
+                </tr>
             </table>
             <div class="float-end">
                 <a href="{{ url('articles') }}" class="btn btn-primary mb-2">Back</a>

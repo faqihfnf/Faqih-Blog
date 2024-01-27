@@ -27,7 +27,8 @@
                                 src="{{ asset('storage/back/' . $item->img) }}" alt="..." /></a>
                         <div class="card-body card-height">
                             <div class="small text-muted d-flex justify-content-between">
-                                <div>{{ $item->created_at->format('d M Y') }}</div>
+                                <div>{{ $item->created_at->format('d M Y') }} || Author :
+                                {{ $item->User->name }}</div>
                                 <div><a
                                         href="{{ url('category/' . $item->Category->slug) }}">{{ $item->Category->name }}</a>
                                 </div>
