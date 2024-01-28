@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Back\ConfigController;
 use App\Http\Controllers\Back\ArticleController;
 use App\Http\Controllers\Back\CategoryController;
 use App\Http\Controllers\Front\ContactController;
@@ -50,6 +51,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/categories', CategoryController::class)->only(['index', 'store', 'update', 'destroy'])->middleware('UserAccess:1'); //1 adalah role admin 2 adalah role penulis 
 
     Route::resource('/users', UserController::class);
+
+    Route::resource('/config', ConfigController::class)->only(['index', 'update']);
 
     Route::group(['prefix' => 'laravel-filemanager'], function () {
         \UniSharp\LaravelFilemanager\Lfm::routes();

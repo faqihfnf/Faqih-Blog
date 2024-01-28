@@ -1,11 +1,21 @@
 @extends('front.layout.template')
 
+@push('meta-seo')
+<meta name="description" content=" kategori Blog Faqih Nur Fahmi berisi tulisan berkaitan dengan ilmu islam berdasarkan al-quran dan sunnah dengan pemahaman sahabat dan salafus shalih">
+<meta name="keyword" content="kategori blog faqih nur fahmi, blog islam, kajian islam, kajian sunnah, kitab ulama, fatwa ulama, nasihat islam, hijrah">
+<meta property="og:title" content="kategori {{ $category . ' - Faqih Nur Fahmi Blog'}}">
+<meta property="og:url" content="{{url()->current()}}">
+<meta property="og:side_name" content="kategori Faqih Nur Fahmi Blog">
+<meta property="og:description" content="kategori Blog Faqih Nur Fahmi berisi tulisan berkaitan dengan ilmu islam berdasarkan al-quran dan sunnah dengan pemahaman sahabat dan salafus shalih">
+<meta property="og:image" content="{{ asset('front/img/logo.jpg') }}">
+@endpush
+
 @section('title', 'Category ' . $category . '- Faqih Nur Fahmi')
 
 @section('content')
     <!-- Page content-->
     <div class="container">
-        <div class="mb-4">
+        <div class="m-2">
             <form action="{{ route('search') }}" method="POST">
                 @csrf
                 <div class="input-group">
@@ -13,11 +23,9 @@
                     <button class="btn btn-primary" id="button-search" type="submit">Search</button>
                 </div>
             </form>
+            <p>Showing articles with category: <b><i>{{ $category }}</b></i>
+            </p>
         </div>
-
-        <p>Showing articles with category: <b><i>{{ $category }}</b></i>
-        </p>
-
         <div class="row">
             @forelse ($articles as $item)
                 <div class="col-lg-4" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">

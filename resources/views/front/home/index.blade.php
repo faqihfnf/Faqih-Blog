@@ -1,5 +1,15 @@
 @extends('front.layout.template')
 
+@push('meta-seo')
+<meta name="description" content="Blog Faqih Nur Fahmi berisi tulisan berkaitan dengan ilmu islam berdasarkan al-quran dan sunnah dengan pemahaman sahabat dan salafus shalih">
+<meta name="keyword" content="faqih nur fahmi, blog islam, kajian islam, kajian sunnah, kitab ulama, fatwa ulama, nasihat islam, hijrah">
+<meta property="og:title" content="Faqih Nur Fahmi Blog">
+<meta property="og:url" content="{{url()->current()}}">
+<meta property="og:side_name" content="Faqih Nur Fahmi Blog">
+<meta property="og:description" content="Blog Faqih Nur Fahmi berisi tulisan berkaitan dengan ilmu islam berdasarkan al-quran dan sunnah dengan pemahaman sahabat dan salafus shalih">
+<meta property="og:image" content="{{ asset('front/img/logo.jpg') }}">
+@endpush
+
 @section('title', 'Faqih Nur Fahmi Blog')
 
 @section('content')

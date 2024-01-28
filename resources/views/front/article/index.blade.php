@@ -1,11 +1,21 @@
 @extends('front.layout.template')
 
+@push('meta-seo')
+<meta name="description" content="artikel Blog Faqih Nur Fahmi berisi tulisan berkaitan dengan ilmu islam berdasarkan al-quran dan sunnah dengan pemahaman sahabat dan salafus shalih">
+<meta name="keyword" content="artikel blog faqih nur fahmi, blog islam, kajian islam, kajian sunnah, kitab ulama, fatwa ulama, nasihat islam, hijrah">
+<meta property="og:title" content="artikel Faqih Nur Fahmi Blog">
+<meta property="og:url" content="{{url()->current()}}">
+<meta property="og:side_name" content="artikel Faqih Nur Fahmi Blog">
+<meta property="og:description" content="artikel Blog Faqih Nur Fahmi berisi tulisan berkaitan dengan ilmu islam berdasarkan al-quran dan sunnah dengan pemahaman sahabat dan salafus shalih">
+<meta property="og:image" content="{{ asset('front/img/logo.jpg') }}">
+@endpush
+
 @section('title', 'Article Blog - Faqih Nur Fahmi Blog')
 
 @section('content')
     <!-- Page content-->
     <div class="container">
-        <div class="mb-4">
+        <div class="m-3">
             <form action="{{ route('search') }}" method="POST">
                 @csrf
                 <div class="input-group">

@@ -1,5 +1,17 @@
 @extends('front.layout.template')
 
+@push('meta-seo')
+<meta name="author" content="{{$article->User->name}}">
+<meta name="description" content="{{Str::limit(strip_tags($article->desc),100,'dst')}}">
+<meta name="keyword" content="{{$article->title . '- Faqih Nur Fahmi'}}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{$article->title . '- Faqih Nur Fahmi'}}">
+<meta property="og:url" content="{{url()->current()}}">
+<meta property="og:side_name" content="Faqih Nur Fahmi Blog">
+<meta property="og:description" content="{{Str::limit(strip_tags($article->desc),100,'dst')}}">
+<meta property="og:image" content="{{ asset('storage/back/' . $article->img) }}">
+@endpush
+
 @section('title', $article->title . '- Faqih Nur Fahmi')
 
 @section('content')

@@ -9,10 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="Faqih Nur Fahmi" />
+    <meta name="robots" content="index, follow">
     @stack('meta-seo')
     <title>@yield('title')</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="{{ asset('front/img/favicon.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('front/img/logo.jpg') }}" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('front/css/styles.css') }}" rel="stylesheet" />
     <link href="{{ asset('front/css/custom.css') }}" rel="stylesheet" />
@@ -24,23 +25,65 @@
 <body>
     @include('front.layout.navbar')
     <!-- Page header with logo and tagline-->
-    <header class="py-5 bg-light border-bottom mb-4">
-        <div class="container">
-            <div class="text-center my-5">
-                <h1 class="fw-bolder">Welcome to Blog Home!</h1>
+    <header class=" bg-light border-bottom mb-3">
+        {{-- ! Carousel Start --}}
+
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{ asset('front/img/carousell1.jpg') }}" class="d-block w-100" alt="carousell" style="height: 400px;">
+                    <div class="carousel-caption">
+                        <h5>First slide label</h5>
+                        <p>Some representative placeholder content for the first slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('front/img/carousell2.png') }}" class="d-block w-100" alt="carousell" style="height: 400px;">
+                    <div class="carousel-caption">
+                        <h5>Second slide label</h5>
+                        <p>Some representative placeholder content for the second slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('front/img/carousell3.png') }}" class="d-block w-100" alt="carousell" style="height: 400px;">
+                    <div class="carousel-caption">
+                        <h5>Third slide label</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        {{-- ! Carousel End --}}
+
+            <div class="text-center m-0">
+                <h1 class="fw-bold">Welcome to Blog Home!</h1>
                 <p class="lead mb-0">A Bootstrap 5 starter layout for your next blog homepage</p>
             </div>
-        </div>
+ 
     </header>
 
     @yield('content')
-
+    @include('front.layout.footer')
     <!-- Footer-->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
-        </div>
-    </footer>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->

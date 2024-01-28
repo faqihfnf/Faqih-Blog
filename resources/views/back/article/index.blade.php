@@ -30,14 +30,6 @@
                 </div>
             @endif
 
-            {{-- @if (session('success'))
-                <div class="my-3">
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                </div>
-            @endif --}}
-
             {{-- Success Alert --}}
             <div class="swal" data-swal="{{ session('success') }}"></div>
 

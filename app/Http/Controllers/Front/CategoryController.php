@@ -21,7 +21,7 @@ class CategoryController extends Controller
     {
         $category = Category::withCount(['Articles' => function (Builder $query) {
                 $query->where('status', 1);           
-            }])->latest()->get();
+            }])->latest()->paginate(12);
         return view('front.category.all-category', compact('category'));
     }
 }
